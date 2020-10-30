@@ -116,7 +116,6 @@ dist
 .pnp.*
 
 src/
-*.json
-.*.json
-!package.json
-!package-lock.json
+.eslintrc.json
+config.example.json
+tsconfig.json
