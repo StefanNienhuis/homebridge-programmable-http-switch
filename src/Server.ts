@@ -26,8 +26,8 @@ export default class Server {
     }
 
     start = (): void => {
-        this.server.listen(this.config.port, () => {
-            this.log.info(`Started listening on port ${this.config.port}`);
+        this.server.listen(this.config.port || 3000, () => {
+            this.log.info(`Started listening on port ${this.config.port || 3000}`);
         });
     }
 
