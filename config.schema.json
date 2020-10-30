@@ -1,5 +1,5 @@
 {
-    "pluginAlias": "Programmable HTTP Switch",
+    "pluginAlias": "ProgrammableHTTPSwitch",
     "pluginType": "platform",
     "singular": true,
     "headerDisplay": "A Homebridge plugin that allows users to create Stateless Programmable Switches which can be controlled using a HTTP API.",
