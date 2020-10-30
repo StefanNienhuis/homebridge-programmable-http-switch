@@ -1,6 +1,16 @@
+<span align="center">
+
 # Programmable HTTP Switch
 
+[![Downloads](https://img.shields.io/npm/dt/homebridge-programmable-http-switch)](https://www.npmjs.com/package/homebridge-programmable-http-switch)
+[![Version](https://img.shields.io/npm/v/homebridge-programmable-http-switch)](https://www.npmjs.com/package/homebridge-programmable-http-switch)
+<br/>
+[![Issues](https://img.shields.io/github/issues/StefanNienhuis/homebridge-programmable-http-switch)](https://github.com/StefanNienhuis/homebridge-programmable-http-switch/issues)
+[![Pull requests](https://img.shields.io/github/issues-pr/StefanNienhuis/homebridge-programmable-http-switch)](https://github.com/StefanNienhuis/homebridge-programmable-http-switch/pulls)
+
 This [Homebridge](https://homebridge.io) plugin allows users to create Stateless Programmable Switches which can be controlled using a HTTP API.
+
+</span>
 
 ## Installation
 First, install Homebridge<br/>
