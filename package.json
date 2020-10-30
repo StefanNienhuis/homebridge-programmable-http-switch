@@ -7,7 +7,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "build": "tsc"
   },
