@@ -3,19 +3,17 @@ import { Action } from '.';
 
 export interface Config extends PlatformConfig {
     accessories: AccessoryConfig[];
+    port: number;
 }
 
-export type AccessoryConfig = SingleButtonAccessoryConfig | MultipleButtonsAccessoryConfig;
-
-export interface SingleButtonAccessoryConfig {
+export interface AccessoryConfig {
     name: string;
     identifier: string;
-    supportedActions?: Action[];
+    buttons: ButtonConfig[];
 }
 
-export interface MultipleButtonsAccessoryConfig {
+export interface ButtonConfig {
     name: string;
     identifier: string;
-    buttons: SingleButtonAccessoryConfig[];
+    supportedActions: Action[];
 }
-

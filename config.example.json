@@ -17,26 +17,27 @@
     "platforms": [
         {
             "platform": "ProgrammableHTTPSwitch",
+            "port": 80,
             "accessories": [
                 {
-                    "name": "Single",
-                    "identifier": "single"
-                },
-                {
-                    "name": "Multiple",
-                    "identifier": "multiple",
+                    "name": "Programmable HTTP switch",
+                    "identifier": "example",
                     "buttons": [
                         {
                             "name": "Button 1",
-                            "identifier": "button1",
+                            "identifier": "button1"
+                        },
+                        {
+                            "name": "Button 2",
+                            "identifier": "button2",
                             "supportedActions": [
                                 "singlePress",
                                 "longPress"
                             ]
                         },
                         {
-                            "name": "Button 2",
-                            "identifier": "button2",
+                            "name": "Button 3",
+                            "identifier": "button3",
                             "supportedActions": [
                                 0
                             ]

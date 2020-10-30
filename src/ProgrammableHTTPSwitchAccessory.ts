@@ -1,17 +1,17 @@
-import { HAP, Service, Logging } from 'homebridge';
+import { HAP, AccessoryPlugin, Service, Logging } from 'homebridge';
 
-import { AccessoryConfig, SingleButtonAccessoryConfig, MultipleButtonsAccessoryConfig, Action } from './types';
+import { AccessoryConfig, ButtonConfig, Action } from './types';
 import { VERSION } from './const';
 
-export default class ProgrammableHTTPSwitchAccessory {
+export default class ProgrammableHTTPSwitchAccessory implements AccessoryPlugin {
+
+    name: string;
 
     private config: AccessoryConfig;
     private log: Logging;
     private hap: HAP;
-
-    name: string;
     
-    private programmableSwitchServices: Service[] = [];
+    private programmableSwitchServices: {[key: string]: Service} = {};
     private informationService: Service;
 
     constructor(log: Logging, config: AccessoryConfig, hap: HAP) {
@@ -21,12 +21,11 @@ export default class ProgrammableHTTPSwitchAccessory {
 
         this.name = this.config.name;
 
-        if (this.hasMultipleButtons()) {
-            this.programmableSwitchServices.push(...(this.config as MultipleButtonsAccessoryConfig).buttons.map(this.createService));
-        } else {
-            this.programmableSwitchServices = [this.createService(this.config as SingleButtonAccessoryConfig)];
+        for (let [indexString, button] of Object.entries(this.config.buttons)) {
+            let index = Number(indexString);
+            this.programmableSwitchServices[button.identifier] = this.createService(button, index);
         }
-
+        
         this.informationService = new this.hap.Service.AccessoryInformation()
             .setCharacteristic(this.hap.Characteristic.Manufacturer, 'Homebridge')
             .setCharacteristic(this.hap.Characteristic.SerialNumber, this.config.identifier)
@@ -36,26 +35,32 @@ export default class ProgrammableHTTPSwitchAccessory {
         this.log.info(`Successfully initialized ProgrammableHTTPSwitch accessory '${this.config.name}'`);
     }
 
-    createService = (button: SingleButtonAccessoryConfig): Service => {
-        let service = new this.hap.Service.StatelessProgrammableSwitch(button.name, button.identifier);
-        
-        service
-            .getCharacteristic(this.hap.Characteristic.ProgrammableSwitchEvent)
-            .setProps({
-                validValues: button.supportedActions?.map((action: string | number) => typeof action != 'number' ? Action[action as keyof typeof Action] : action) || [0, 1, 2]
-            });
-
-        return service;
-    }
-
     getServices = (): Service[] => {
         return [
-            ...this.programmableSwitchServices,
+            ...Object.values(this.programmableSwitchServices),
             this.informationService
         ];
     }
 
-    hasMultipleButtons = (config: AccessoryConfig = this.config): boolean => {
-        return Object.prototype.hasOwnProperty.call(config, 'buttons');
+    identify = (): void => {
+        this.log.info(`Identify triggered for accessory '${this.name}'`);
+    }
+
+    createService = (button: ButtonConfig, index: number): Service => {
+        let service = new this.hap.Service.StatelessProgrammableSwitch(button.name, button.identifier);
+        
+        service.getCharacteristic(this.hap.Characteristic.ProgrammableSwitchEvent)
+               .setProps({
+                   validValues: button.supportedActions?.map((action: string | number) => typeof action != 'number' ? Action[action as keyof typeof Action] : action) || [0, 1, 2]
+               });
+
+        service.setCharacteristic(this.hap.Characteristic.ServiceLabelIndex, index + 1);
+
+        return service;
+    }
+
+    setState = (buttonIdentifier: string, action: Action): void => {
+        this.programmableSwitchServices[buttonIdentifier]
+            .setCharacteristic(this.hap.Characteristic.ProgrammableSwitchEvent, action);
     }
 }
