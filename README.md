@@ -2,6 +2,13 @@
 
 This [Homebridge](https://homebridge.io) plugin allows users to create Stateless Programmable Switches which can be controlled using a HTTP API.
 
+## Installation
+First, install Homebridge<br/>
+`npm install --global homebridge`
+
+Then, install the Programmable HTTP Switch plugin<br/>
+`npm install --global homebridge-programmable-http-switch`
+
 ## Configuration
 ### Platform configuration
 An example configuration can be found in the [config.example.json](config.example.json) file.
@@ -22,7 +29,7 @@ An example configuration can be found in the [config.example.json](config.exampl
 ### Button configuration
 | Property           | Type       | Details                                                                                                                                                      |
 | ------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `name`             | `string`   | **Required**<br/>The name of the accessory.<br/> *Note:* Not shown in Apple's Home app.                                                                      |
+| `name`             | `string`   | **Required**<br/>The name of the button.<br/> *Note:* Not shown in Apple's Home app.                                                                         |
 | `identifier`       | `string`   | **Required**<br/>The identifier used in the API.                                                                                                             |
 | `supportedActions` | `string[]` | Optional, default: all<br/>List of actions that this button supports.<br/>*Supported values:* `singlePress` (`0`), `doublePress` (`1`) and `longPress` (`2`) |
 

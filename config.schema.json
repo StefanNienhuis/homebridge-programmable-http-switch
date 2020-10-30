@@ -1,0 +1,84 @@
+{
+    "pluginAlias": "Programmable HTTP Switch",
+    "pluginType": "platform",
+    "singular": true,
+    "headerDisplay": "A Homebridge plugin that allows users to create Stateless Programmable Switches which can be controlled using a HTTP API.",
+    "schema": {
+        "type": "object",
+        "properties": {
+            "accessories": {
+                "title": "Accessories",
+                "description": "List of accessory configurations.",
+                "type": "array",
+                "required": true,
+                "items": {
+                    "title": "Accessory",
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "title": "Name",
+                            "description": "The name of the accessory.",
+                            "type": "string",
+                            "required": true
+                        },
+                        "identifier": {
+                            "title": "Identifier",
+                            "description": "The identifier used in the API.",
+                            "type": "string",
+                            "required": true
+                        },
+                        "buttons": {
+                            "title": "Buttons",
+                            "description": "List of button configurations.",
+                            "type": "array",
+                            "required": true,
+                            "items": {
+                                "title": "Button",
+                                "type": "object",
+                                "required": true,
+                                "properties": {
+                                    "name": {
+                                        "title": "Name",
+                                        "description": "The name of the button.<br/> Note: Not shown in Apple's Home app.",
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "identifier": {
+                                        "title": "Identifier",
+                                        "description": "The identifier used in the API.",
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "supportedActions": {
+                                        "title": "Supported actions",
+                                        "description": "List of actions that this button supports.",
+                                        "type": "array",
+                                        "minItems": 1,
+                                        "required": true,
+                                        "default": ["singlePress", "doublePress", "longPress"],
+                                        "uniqueItems": true,
+                                        "items": {
+                                            "title": "Action",
+                                            "type": "string",
+                                            "enum": [
+                                                "singlePress",
+                                                "doublePress",
+                                                "longPress"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "port": {
+                "title": "Port",
+                "type": "number",
+                "required": false,
+                "placeholder": 3000
+            }
+        }
+    }
+}

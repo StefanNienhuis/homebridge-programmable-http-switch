@@ -1,14 +1,15 @@
 {
   "name": "homebridge-programmable-http-switch",
   "displayName": "Programmable HTTP Switch",
-  "description": "A Homebridge plugin for Programmable Switches that can be triggered from HTTP requests.",
+  "description": "A Homebridge plugin that allows users to create Stateless Programmable Switches which can be controlled using a HTTP API.",
   "homepage": "https://github.com/StefanNienhuis/homebridge-programmable-http-switch#readme",
   "author": "Stefan Nienhuis",
   "main": "build/index.js",
+  "types": "build/index.d.ts",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "dependencies": {
     "express": "^4.17.1"
