@@ -2,6 +2,7 @@
 
 # Programmable HTTP Switch
 
+[![verified-by-homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins)
 [![Downloads](https://img.shields.io/npm/dt/homebridge-programmable-http-switch)](https://www.npmjs.com/package/homebridge-programmable-http-switch)
 [![Version](https://img.shields.io/npm/v/homebridge-programmable-http-switch)](https://www.npmjs.com/package/homebridge-programmable-http-switch)
 <br/>

@@ -43,5 +43,15 @@
   },
   "bugs": {
     "url": "https://github.com/StefanNienhuis/homebridge-programmable-http-switch/issues"
-  }
+  },
+  "funding": [
+    {
+      "type": "paypal",
+      "url": "https://paypal.me/stefannienhuis"
+    },
+    {
+      "type": "kofi",
+      "url": "https://ko-fi.com/stefannienhuis"
+    }
+  ]
 }
